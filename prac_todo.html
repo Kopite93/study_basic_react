@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오늘의 To-do</title>
+  <style>
+    #title {
+      color: blue;
+      text-decoration: underline;
+    }
+
+    .wrap {
+      display: flex;
+
+    }
+
+    .todo-card {
+      border: 1px solid gray;
+      padding: 2em;
+      margin: 1em;
+      border-radius: 5px;
+    }
+
+    button {
+      width: calc(80% - 20px);
+    }
+
+    button:hover {
+      background-color: orange;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h1 id="title">오늘 할 일</h1>
+  <div class="wrap">
+    <div class="todo-card">
+      <h3>리액트 강의 1주차 듣기</h3>
+      <p>리액트 강의 다 듣기</p>
+      <button onclick="changeColor(0)">완료</button>
+    </div>
+
+    <div class="todo-card">
+      <h3>알고리즘 한 문제 풀기</h3>
+      <p>풀고 오후 11시에 모이기</p>
+      <button>완료</button>
+    </div>
+
+  </div>
+
+  <div class="wrap">
+    <div class="todo-card">
+      <h3>잔디심기</h3>
+      <p>깃허브에 잔디심기</p>
+      <button>완료</button>
+    </div>
+
+    <div class="todo-card">
+      <h3>잔디심기</h3>
+      <p>깃허브에 잔디심기</p>
+      <button>완료</button>
+    </div>
+  </div>
+
+  <script>
+
+    function changeColor(index) {
+      let card = document.getElementsByClassName("todo-card")[index];
+      card.style.backgroundColor = "gray";
+    }
+    const wraps = document.getElementsByClassName("wrap")
+
+    console.log(wraps);
+
+    const title = document.getElementById("title");
+    console.log(title);
+    title.style.backgroundColor = "lightgreen"
+
+    const buttons = document.getElementsByTagName("button")
+
+    const new_div = document.createElement("div");
+    new_div.style.backgroundColor = "green";
+    new_div.style.height = "100px";
+    new_div.style.width = "100px";
+    document.body.appendChild(new_div);
+    console.log(new_div);
+  </script>
+</body>
+
+</html>
