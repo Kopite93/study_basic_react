@@ -1,4 +1,6 @@
 node_modules
 package.json
 yarn.lock
-README.md
+week-1/README.md
+lifecycle/README.md
+bucket_list/README.md
