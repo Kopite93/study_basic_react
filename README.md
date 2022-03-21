@@ -15,3 +15,6 @@
 - 220321
   - state 관리 (클래스형) : nemo/src/App.js
   - state 관리 (함수형) : nemo/src/Nemo.js
+  - EvenvListener : event_listener_ex
+  - 라우팅 : route_ex
+  - 리액트 입문 개인과제 시작 : day_grade
