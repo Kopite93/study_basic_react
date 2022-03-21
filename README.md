@@ -10,3 +10,8 @@
   - Component (props, state) : bucket_list/
   - react에서 CSS 꾸미기 : bucket_list/src/style.css
   - stlyed-components 사용해보기 : bucket_list/src/app.js
+- 220320
+  - ref : bucket_list/src/app.js
+- 220321
+  - state 관리 (클래스형) : nemo/src/App.js
+  - state 관리 (함수형) : nemo/src/Nemo.js
