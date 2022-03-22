@@ -18,3 +18,5 @@
   - EvenvListener : event_listener_ex
   - 라우팅 : route_ex
   - 리액트 입문 개인과제 시작 : day_grade
+- 220322
+  - day_grade : 평점 선택 기능 구현
