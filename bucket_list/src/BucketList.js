@@ -1,26 +1,39 @@
+// 리액트 패키지를 불러옵니다.
 import React from "react";
 import styled from "styled-components";
-
-const BucketList = ({ list_a }) => {
-  console.log(list_a);
-  const my_lists = list_a
-  const my_wrap = React.useRef(null);
-  console.log(my_wrap)
-
+import { useHistory } from "react-router-dom";
+const BucketList = (props) => {
+  let history = useHistory();
+  console.log(props);
+  const my_lists = props.list;
   return (
-    <div ref={my_wrap}>
+    <ListStyle>
       {my_lists.map((list, index) => {
-        console.log(list);
-        return <Itemstyle key={index}>{list}</Itemstyle>;
+        return (
+          <ItemStyle
+            className="list_item"
+            key={index}
+            onClick={() => {
+              history.push("/detail");
+            }}
+          >
+            {list}
+          </ItemStyle>
+        );
       })}
-    </div>
+    </ListStyle>
   );
 };
-
-const Itemstyle = styled.div`
+const ListStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+`;
+const ItemStyle = styled.div`
   padding: 16px;
   margin: 8px;
-  background-color: lightblue;
+  background-color: aliceblue;
 `;
-
 export default BucketList;

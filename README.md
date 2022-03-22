@@ -20,3 +20,4 @@
   - 리액트 입문 개인과제 시작 : day_grade
 - 220322
   - day_grade : 평점 선택 기능 구현
+  - 리덕스 체험하기 : bucket_list/src/redux/module/bucket.js
