@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./style.css";
+import { useParams, useHistory } from "react-router-dom";
 
 const Detail = (props) => {
+  const day = useParams().day_name;
   const [clicked, setClicked] = React.useState([
     false,
     false,
@@ -16,10 +18,23 @@ const Detail = (props) => {
     }
 
     setClicked(clickStates);
-    console.log(clicked);
+    // console.log(clicked);
   };
-  const day = props.history.location.pathname.split("/")[2];
-  const circle_count = Array.from({ length: 5 }, (v, i) => i);
+
+  const circle_count = [0, 1, 2, 3, 4];
+
+  // const keyevent = window.addEventListener("keydown", (e) => {
+  //   console.log(e.key);
+  //   if ([1, 2, 3, 4, 5].indexOf(parseInt(e.key)) != -1) {
+  //     let clickStates = [...clicked];
+  //     for (let i = 0; i < 5; i++) {
+  //       i <= parseInt(e.key) - 1
+  //         ? (clickStates[i] = true)
+  //         : (clickStates[i] = false);
+  //     }
+  //     setClicked(clickStates);
+  //   }
+  // });
 
   return (
     <div className="detail">
@@ -34,6 +49,7 @@ const Detail = (props) => {
               key={idx}
               style={{ backgroundColor: clicked[idx] ? "lightblue" : "#ddd" }}
               onClick={(e) => changeColor(e, idx)}
+              // onKeyDown={keyevent}
             ></div>
           );
         })}

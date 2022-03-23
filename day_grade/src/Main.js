@@ -1,11 +1,18 @@
-import React from "react";
+import { React, useState } from "react";
 import Detail from "./Detail";
 import { Route, useHistory } from "react-router-dom";
 
 const Main = (props) => {
-  console.log(props.history)
   const day = props.day;
-  const circle_count = Array.from({ length: 5 }, (v, i) => i);
+  // const today = day.map((cur, idx) => {
+  //   const today = new Date().getDay();
+
+  //   let d = today + idx > 6 ? today + idx - 7 : today + idx;
+  //   return day[d];
+  // });
+  // console.log(today);
+
+  const circle_count = [0, 1, 2, 3, 4];
   const history = useHistory();
 
   const week_rates = day.map((day, idx) => {

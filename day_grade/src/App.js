@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Route path="/" exact render={(props) => <Main day={day} />} />
-      <Route path="/review" component={Detail} />
+      <Route path="/review/:day_name" component={Detail} />
     </div>
   );
 }
