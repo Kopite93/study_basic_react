@@ -28,3 +28,4 @@
 - 220324
   - 리덕스 이어서 공부 : bucket_list/src/redux/module/bucket.js
   - 리덕스 스토어 만들기 : bucket_list/src/redux/configStore.js
+  - 리액트 2주차 숙제 폴더 생성 : my_dic
