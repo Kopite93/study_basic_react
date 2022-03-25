@@ -25,4 +25,6 @@
   - day_grade
     - 오늘에 해당하는 요일을 기준으로 랜덤 평점 보여주기 (보고 따라함)
     - 숫자키를 눌렀을 때, 평점이 입력되는 기능은 구현 - 그런데 열번 이상 누르면 처리가 늦어지는 것인지 페이지 작동이 느려진다
--
+- 220324
+  - 리덕스 이어서 공부 : bucket_list/src/redux/module/bucket.js
+  - 리덕스 스토어 만들기 : bucket_list/src/redux/configStore.js
