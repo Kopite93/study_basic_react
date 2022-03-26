@@ -20,8 +20,24 @@ function AddDic() {
       trans: inputTrans.current.value,
     };
 
-    dispatch(addDicFB(data));
-    history.goBack();
+    if (inputWord.current.value === "") {
+      alert("단어를 입력해주세요");
+    } else {
+      if (inputMean.current.value === "") {
+        alert("의미를 입력해주세요");
+      } else {
+        if (inputEx.current.value === "") {
+          alert("예문을 입력해주세요");
+        } else {
+          if (inputTrans.current.value === "") {
+            alert("예문의 해석을 입력해주세요");
+          } else {
+            dispatch(addDicFB(data));
+            history.goBack();
+          }
+        }
+      }
+    }
   };
 
   return (
