@@ -21,6 +21,7 @@ function AddDic() {
     };
 
     dispatch(addDicFB(data));
+    history.goBack();
   };
 
   return (
@@ -44,7 +45,6 @@ function AddDic() {
       </DescBox>
       <SubmitBtn
         onClick={() => {
-          history.goBack();
           addWord();
         }}
       >
