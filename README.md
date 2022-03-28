@@ -38,3 +38,9 @@
       - 파이어베이스에서 데이터 가져오고, 저장하기 공부
 - 220327
   - input 유효성 검사 기능 만들기
+- 220328
+  - 리덕스와 파이어베이스 연결하여 데이터 가져오기 복습
+  - 수정 기능 만들기
+    - You provided a `value` prop to a form field without an `onChange` handler.
+      input에 원래 적었던 내용들을 출력했더니, 이런 문제가 생겼다
+      defaultValue, value의 차이점이라고 하는데 해결은 했지만 더 찾아봐야한다

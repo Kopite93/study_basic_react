@@ -1,4 +1,3 @@
-//dic.js
 import { db } from "../../firebase";
 import {
   collection,
@@ -11,28 +10,8 @@ import {
 } from "firebase/firestore";
 
 const initialState = {
-  list: [
-    {
-      word: "apple",
-      mean: "사과",
-      example: "Apple is best fruits",
-      trans: "사과는 최고의 과일이다",
-    },
-    {
-      word: "banana",
-      mean: "바나나",
-      example: "Banana is best fruits",
-      trans: "바나나는 최고의 과일이다",
-    },
-    {
-      word: "grape",
-      mean: "포도",
-      example: "Grape is best fruits",
-      trans: "포도는 최고의 과일이다",
-    },
-  ],
+  list: [],
 };
-
 
 // Actions
 const LOAD = "my_dic/LOAD";
@@ -49,9 +28,9 @@ export function createDic(dic) {
   return { type: CREATE, dic: dic };
 }
 
-// export function updateWidget(widget) {
-//   return { type: UPDATE, widget };
-// }
+export function updateDic(dic_id, data) {
+  return { type: UPDATE, dic_id };
+}
 
 // export function removeWidget(widget) {
 //   return { type: REMOVE, widget };
@@ -84,6 +63,14 @@ export const addDicFB = (dic) => {
   };
 };
 
+export const updateDicFB = (dic_id, data) => {
+  return async function (dispatch) {
+    console.log(dic_id);
+    const docRef = doc(db, "dictionary", dic_id);
+    await updateDoc(docRef, data);
+  };
+};
+
 // Reducer
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
@@ -93,6 +80,18 @@ export default function reducer(state = initialState, action = {}) {
     case "my_dic/CREATE": {
       const new_dic_list = [...state.list, action.dic];
       return { list: new_dic_list };
+    }
+    case "my_dic/UPDATE": {
+      console.log(state, action);
+      const new_bucket_list = state.list.map((cur, idx) => {
+        console.log(cur);
+        if (action.dic_id === cur.id) {
+          return { ...cur };
+        } else {
+          return cur;
+        }
+      });
+      return {list: new_bucket_list}
     }
     default:
       return state;

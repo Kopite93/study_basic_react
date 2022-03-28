@@ -12,6 +12,7 @@ function AddDic() {
   const inputTrans = useRef(null);
   const dispatch = useDispatch();
 
+
   const addWord = () => {
     let data = {
       word: inputWord.current.value,

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import Home from "./Home";
 import AddDic from "./AddDic";
+import UpdateDic from "./UdateDic";
 import { Route, useHistory } from "react-router-dom";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Line />
         <Route path="/" exact component={Home} />
         <Route path="/addDic" exact component={AddDic} />
+        <Route path="/updateDic/:id" exact component={UpdateDic} />
       </Container>
     </div>
   );

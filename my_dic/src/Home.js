@@ -16,9 +16,9 @@ import {
 
 function Home() {
   const history = useHistory();
-  const dicWord = useSelector((state) => state.dic.list);
+  const dicWord = useSelector((state) => state.dic.list); // state는 스토어의 전체 데이터를 의미
   const dispatch = useDispatch();
-  useEffect(async () => {
+  useEffect(() => {
     dispatch(loadDicFB());
   }, []);
 
@@ -27,13 +27,20 @@ function Home() {
       <TotalBox>
         {dicWord.map((cur, idx) => {
           return (
-            <DicBox key={idx}>
-              <p>단어 : {dicWord[idx].word}</p>
-              <p>의미 : {dicWord[idx].mean}</p>
+            <DicBox key={cur.id}>
+              <Update
+                onClick={() => {
+                  history.push(`/updateDic/${cur.id}`);
+                }}
+              >
+                수정
+              </Update>
+              <p>단어 : {cur.word}</p>
+              <p>의미 : {cur.mean}</p>
               <p>
-                예문 : <span>{dicWord[idx].example}</span>
+                예문 : <span>{cur.example}</span>
               </p>
-              <p>해석 : {dicWord[idx].trans}</p>
+              <p>해석 : {cur.trans}</p>
             </DicBox>
           );
         })}
@@ -78,6 +85,13 @@ const DicBox = styled.div`
   }
   span {
     color: skyblue;
+  }
+`;
+
+const Update = styled.div`
+  color: green;
+  &:hover {
+    cursor: pointer;
   }
 `;
 
