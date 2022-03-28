@@ -29,13 +29,15 @@ function Home() {
         {dicWord.map((cur, idx) => {
           return (
             <DicBox key={cur.id}>
-              <Update
-                onClick={() => {
-                  history.push(`/updateDic/${cur.id}`);
-                }}
-              >
-                수정
-              </Update>
+              <div>
+                <Update
+                  onClick={() => {
+                    history.push(`/updateDic/${cur.id}`);
+                  }}
+                >
+                  수정
+                </Update>
+              </div>
               <p>단어 : {cur.word}</p>
               <p>의미 : {cur.mean}</p>
               <p>
@@ -51,7 +53,7 @@ function Home() {
           history.push(`/addDic`);
         }}
       >
-        추가
+        +
       </Plus>
     </>
   );
@@ -71,6 +73,7 @@ const TotalBox = styled.div`
 const DicBox = styled.div`
   border: 2px solid lightblue;
   border-radius: 10px;
+  font-size: 1.2em;
   width: 25vw;
   max-width: 400px;
   min-height: 200px;
@@ -85,11 +88,17 @@ const DicBox = styled.div`
     margin-left: 10px;
   }
   span {
-    color: skyblue;
+    color: blue;
+  }
+  div {
+    display: flex;
+    justify-content: flex-end;
   }
 `;
 
 const Update = styled.div`
+  // border: 1px solid black;
+  margin: 5px;
   color: green;
   &:hover {
     cursor: pointer;
@@ -97,8 +106,11 @@ const Update = styled.div`
 `;
 
 const Plus = styled.button`
+  border: none;
   border-radius: 100%;
-  background-color: #ffffff;
+  font-size: 3em;
+  color: #ffffff;
+  background-color: skyblue;
   width: 60px;
   height: 60px;
   position: fixed;

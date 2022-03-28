@@ -5,6 +5,7 @@ import AddDic from "./AddDic";
 import UpdateDic from "./UdateDic";
 import { Route, useHistory } from "react-router-dom";
 
+
 function App() {
   const history = useHistory();
   return (
