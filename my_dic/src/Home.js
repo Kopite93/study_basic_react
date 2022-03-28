@@ -17,6 +17,7 @@ import {
 function Home() {
   const history = useHistory();
   const dicWord = useSelector((state) => state.dic.list); // state는 스토어의 전체 데이터를 의미
+  console.log(dicWord);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadDicFB());

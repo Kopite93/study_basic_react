@@ -64,10 +64,12 @@ export const addDicFB = (dic) => {
 };
 
 export const updateDicFB = (dic_id, data) => {
-  return async function (dispatch) {
+  return async function (dispatch, getState) {
     console.log(dic_id);
     const docRef = doc(db, "dictionary", dic_id);
     await updateDoc(docRef, data);
+    console.log(getState().dic);
+    dispatch(updateDic(dic_id, data));
   };
 };
 
@@ -88,10 +90,10 @@ export default function reducer(state = initialState, action = {}) {
         if (action.dic_id === cur.id) {
           return { ...cur };
         } else {
-          return cur;
+          return state;
         }
       });
-      return {list: new_bucket_list}
+      return { list: new_bucket_list };
     }
     default:
       return state;
