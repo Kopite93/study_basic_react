@@ -3,16 +3,6 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { createDic, loadDicFB } from "./redux/modules/dic";
-import { db } from "./firebase";
-import {
-  collection,
-  getDoc,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-} from "firebase/firestore";
 
 function Home() {
   const history = useHistory();
@@ -40,7 +30,9 @@ function Home() {
                   수정
                 </Update>
               </div>
-              <p>{cur.word}</p>
+              <p>
+                <b>{cur.word}</b>
+              </p>
               <p>{cur.mean}</p>
               <p>
                 <span>{cur.example}</span>

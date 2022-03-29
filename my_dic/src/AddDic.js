@@ -33,7 +33,7 @@ function AddDic() {
             alert("예문의 해석을 입력해주세요");
           } else {
             dispatch(addDicFB(data));
-            history.push("/");
+            history.goBack();
           }
         }
       }
