@@ -12,7 +12,6 @@ function AddDic() {
   const inputTrans = useRef(null);
   const dispatch = useDispatch();
 
-
   const addWord = () => {
     let data = {
       word: inputWord.current.value,
@@ -34,7 +33,7 @@ function AddDic() {
             alert("예문의 해석을 입력해주세요");
           } else {
             dispatch(addDicFB(data));
-            history.goBack();
+            history.push("/");
           }
         }
       }
@@ -96,8 +95,13 @@ const SubmitBtn = styled.button`
   height: 50px;
   border: none;
   border-radius: 10px;
-  background-color: lightblue;
+  background-color: slateblue;
   margin: 50px 97.5px;
+  font-size: 1.5em;
+  color: #ffffff;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default AddDic;

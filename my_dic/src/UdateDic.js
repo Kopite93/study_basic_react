@@ -45,7 +45,7 @@ function UpdateDic() {
           } else {
             // dispatch(updateDic(id, data));
             dispatch(updateDicFB(id, data));
-            history.goBack();
+            history.push("/");
           }
         }
       }
@@ -113,8 +113,13 @@ const SubmitBtn = styled.button`
   height: 50px;
   border: none;
   border-radius: 10px;
-  background-color: lightblue;
+  background-color: slateblue;
   margin: 50px 97.5px;
+  font-size: 1.5em;
+  color: #ffffff;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default UpdateDic;

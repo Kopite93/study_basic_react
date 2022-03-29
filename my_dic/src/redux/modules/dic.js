@@ -13,7 +13,7 @@ const initialState = {
   list: [],
 };
 
-// Actions
+// Action type
 const LOAD = "my_dic/LOAD";
 const CREATE = "my_dic/CREATE";
 const UPDATE = "my_dic/UPDATE";
@@ -29,7 +29,7 @@ export function createDic(dic) {
 }
 
 export function updateDic(dic_id, data) {
-  return { type: UPDATE, dic_id };
+  return { type: UPDATE, dic_id, data };
 }
 
 // export function removeWidget(widget) {
@@ -44,7 +44,6 @@ export const loadDicFB = () => {
     let dic_list = [];
 
     dic_data.forEach((doc) => {
-      console.log(doc.data());
       dic_list.push({ id: doc.id, ...doc.data() });
     });
     console.log(dic_list);
@@ -65,7 +64,7 @@ export const addDicFB = (dic) => {
 
 export const updateDicFB = (dic_id, data) => {
   return async function (dispatch, getState) {
-    console.log(dic_id);
+    console.log(data);
     const docRef = doc(db, "dictionary", dic_id);
     await updateDoc(docRef, data);
     console.log(getState().dic);
@@ -84,16 +83,16 @@ export default function reducer(state = initialState, action = {}) {
       return { list: new_dic_list };
     }
     case "my_dic/UPDATE": {
-      console.log(state, action);
-      const new_bucket_list = state.list.map((cur, idx) => {
-        console.log(cur);
+      const new_dic_list = state.list.map((cur, idx) => {
+        console.log(state, action);
         if (action.dic_id === cur.id) {
-          return { ...cur };
+          return { id: action.dic_id, ...action.data };
         } else {
-          return state;
+          return cur;
         }
       });
-      return { list: new_bucket_list };
+      console.log(new_dic_list);
+      return { list: new_dic_list };
     }
     default:
       return state;

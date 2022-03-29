@@ -22,6 +22,8 @@ function Home() {
   useEffect(() => {
     dispatch(loadDicFB());
   }, []);
+  // 마운트될 때만 실행시키기 위해서
+  // 두번째 파라미터를 []로 주었다
 
   return (
     <>
@@ -38,12 +40,12 @@ function Home() {
                   수정
                 </Update>
               </div>
-              <p>단어 : {cur.word}</p>
-              <p>의미 : {cur.mean}</p>
+              <p>{cur.word}</p>
+              <p>{cur.mean}</p>
               <p>
-                예문 : <span>{cur.example}</span>
+                <span>{cur.example}</span>
               </p>
-              <p>해석 : {cur.trans}</p>
+              <p>{cur.trans}</p>
             </DicBox>
           );
         })}
@@ -118,7 +120,9 @@ const Plus = styled.button`
   bottom: 50px;
   &: hover {
     cursor: pointer;
+    transform: rotate(90deg);
   }
+  transition: transform 300ms ease-in-out;
 `;
 
 export default Home;

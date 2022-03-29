@@ -44,3 +44,6 @@
     - You provided a `value` prop to a form field without an `onChange` handler.
       input에 원래 적었던 내용들을 출력했더니, 이런 문제가 생겼다
       defaultValue, value의 차이점이라고 하는데 해결은 했지만 더 찾아봐야한다
+- 220329
+  - 단어 카드를 수정할 때, 리덕스는 제대로 수정이 되지 않던 오류 수정
+  - 약간의 소소한 css 수정
