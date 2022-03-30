@@ -66,10 +66,6 @@ export const updateDicFB = (dic_id, data) => {
   return async function (dispatch, getState) {
     const docRef = doc(db, "dictionary", dic_id);
 
-    const _dic_list = getState().dic.list;
-    const dic_index = _dic_list.findIndex((d) => {
-      return d.id === dic_id;
-    });
     if (data === false) {
       console.log("트루가 되나?");
       await updateDoc(docRef, { check: true });
@@ -92,7 +88,6 @@ export const updateDicFB = (dic_id, data) => {
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case "my_dic/LOAD": {
-      console.log(action.dic_list);
       return { list: action.dic_list };
     }
     case "my_dic/CREATE": {
@@ -100,6 +95,7 @@ export default function reducer(state = initialState, action = {}) {
       return { list: new_dic_list };
     }
     case "my_dic/UPDATE": {
+      console.log(state)
       const new_dic_list = state.list.map((cur, idx) => {
         console.log(cur);
         if (action.dic_id === cur.id) {

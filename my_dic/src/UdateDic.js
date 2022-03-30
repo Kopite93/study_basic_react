@@ -2,10 +2,7 @@ import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  loadDicFB,
-  updateDicFB,
-} from "./redux/modules/dic";
+import { loadDicFB, updateDicFB } from "./redux/modules/dic";
 
 function UpdateDic() {
   const id = useParams().id;
