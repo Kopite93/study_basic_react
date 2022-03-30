@@ -18,6 +18,7 @@ function AddDic() {
       mean: inputMean.current.value,
       example: inputEx.current.value,
       trans: inputTrans.current.value,
+      check: false,
     };
 
     if (inputWord.current.value === "") {

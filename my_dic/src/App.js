@@ -43,7 +43,7 @@ const Container = styled.div`
 `;
 
 const Line = styled.hr`
-  border: 1px solid lightblue;
+  border: 1px solid slateblue;
   width: 98vw;
 `;
 export default App;

@@ -3,10 +3,7 @@ import styled from "styled-components";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  createDic,
-  addDicFB,
   loadDicFB,
-  updateDic,
   updateDicFB,
 } from "./redux/modules/dic";
 

@@ -64,11 +64,27 @@ export const addDicFB = (dic) => {
 
 export const updateDicFB = (dic_id, data) => {
   return async function (dispatch, getState) {
-    console.log(data);
     const docRef = doc(db, "dictionary", dic_id);
-    await updateDoc(docRef, data);
-    console.log(getState().dic);
-    dispatch(updateDic(dic_id, data));
+
+    const _dic_list = getState().dic.list;
+    const dic_index = _dic_list.findIndex((d) => {
+      return d.id === dic_id;
+    });
+    if (data === false) {
+      console.log("트루가 되나?");
+      await updateDoc(docRef, { check: true });
+      dispatch(updateDic(dic_id, { check: true }));
+    } else {
+      if (data === true) {
+        console.log("펄스가 되나?");
+        await updateDoc(docRef, { check: false });
+        dispatch(updateDic(dic_id, { check: false }));
+      } else {
+        console.log("이게 맞나");
+        await updateDoc(docRef, data);
+        dispatch(updateDic(dic_id, data));
+      }
+    }
   };
 };
 
@@ -76,6 +92,7 @@ export const updateDicFB = (dic_id, data) => {
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case "my_dic/LOAD": {
+      console.log(action.dic_list);
       return { list: action.dic_list };
     }
     case "my_dic/CREATE": {
@@ -84,9 +101,9 @@ export default function reducer(state = initialState, action = {}) {
     }
     case "my_dic/UPDATE": {
       const new_dic_list = state.list.map((cur, idx) => {
-        console.log(state, action);
+        console.log(cur);
         if (action.dic_id === cur.id) {
-          return { id: action.dic_id, ...action.data };
+          return { id: action.dic_id, ...cur, ...action.data };
         } else {
           return cur;
         }
