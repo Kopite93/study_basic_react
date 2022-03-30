@@ -49,8 +49,8 @@ function Home(props) {
               <p style={{ color: cur.check ? "#ffffff" : "black" }}>
                 {cur.mean}
               </p>
-              <p style={{ color: cur.check ? "#ffffff" : "skyblue" }}>
-                <span>{cur.example}</span>
+              <p style={{ color: cur.check ? "black" : "blue" }}>
+                {cur.example}
               </p>
               <p style={{ color: cur.check ? "#ffffff" : "black" }}>
                 {cur.trans}
@@ -99,9 +99,6 @@ const DicBox = styled.div`
     width: 80%;
     font-weight: 700;
     margin-left: 10px;
-  }
-  span {
-    color: blue;
   }
   div {
     display: flex;
