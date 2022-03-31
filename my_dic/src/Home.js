@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { createDic, loadDicFB, updateDicFB } from "./redux/modules/dic";
+import {
+  createDic,
+  deleteDic,
+  loadDicFB,
+  checkDicFB,
+  deleteDicFB,
+} from "./redux/modules/dic";
 
 function Home(props) {
   const history = useHistory();
@@ -29,7 +35,7 @@ function Home(props) {
                 <Check
                   style={{ color: cur.check ? "#ffffff" : "slateblue" }}
                   onClick={() => {
-                    dispatch(updateDicFB(cur.id, cur.check));
+                    dispatch(checkDicFB(cur.id, cur.check));
                   }}
                 >
                   ✔
@@ -42,6 +48,16 @@ function Home(props) {
                 >
                   ♻
                 </Update>
+                <Delete
+                  style={{ color: cur.check ? "#ffffff" : "slateblue" }}
+                  onClick={() => {
+                    if (window.confirm("삭제하겠습니까?")) {
+                      dispatch(deleteDicFB(cur.id));
+                    }
+                  }}
+                >
+                  ✖
+                </Delete>
               </div>
               <p style={{ color: cur.check ? "#ffffff" : "slateblue" }}>
                 {cur.word}
@@ -72,7 +88,7 @@ function Home(props) {
 
 const TotalBox = styled.div`
   // border: 1px solid blue;
-  max-width: 1300px;
+  min-width: 1300px;
   height: fit-content;
   margin: 50px auto;
   display: flex;
@@ -86,7 +102,8 @@ const DicBox = styled.div`
   border-radius: 10px;
   font-size: 1.2em;
   width: 25vw;
-  max-width: 400px;
+  min-width: 350px;
+  max-width: 450px;
   min-height: 350px;
   margin: 10px 10px;
   display: flex;
@@ -116,6 +133,14 @@ const Update = styled.div`
 `;
 
 const Check = styled.div`
+  margin: 5px;
+  font-size: 1.5em;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const Delete = styled.div`
   margin: 5px;
   font-size: 1.5em;
   &:hover {

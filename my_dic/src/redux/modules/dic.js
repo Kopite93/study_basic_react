@@ -17,7 +17,7 @@ const initialState = {
 const LOAD = "my_dic/LOAD";
 const CREATE = "my_dic/CREATE";
 const UPDATE = "my_dic/UPDATE";
-const REMOVE = "my_dic/REMOVE";
+const DELETE = "my_dic/DELETE";
 
 // Action Creators
 export function loadDic(dic_list) {
@@ -32,9 +32,9 @@ export function updateDic(dic_id, data) {
   return { type: UPDATE, dic_id, data };
 }
 
-// export function removeWidget(widget) {
-//   return { type: REMOVE, widget };
-// }
+export function deleteDic(dic_id) {
+  return { type: DELETE, dic_id };
+}
 
 //middlewares
 export const loadDicFB = () => {
@@ -57,33 +57,46 @@ export const addDicFB = (dic) => {
     const docRef = await addDoc(collection(db, "dictionary"), dic);
     // const _dic = await getDoc(docRef);
     const dic_data = { id: docRef.id, ...dic };
-
+    console.log(dic_data);
     dispatch(createDic(dic_data));
   };
 };
 
-export const updateDicFB = (dic_id, data) => {
-  return async function (dispatch, getState) {
+export const checkDicFB = (dic_id, checkData) => {
+  return async function (dispatch) {
     const docRef = doc(db, "dictionary", dic_id);
 
-    if (data === false) {
+    if (checkData === false) {
       console.log("트루가 되나?");
       await updateDoc(docRef, { check: true });
       dispatch(updateDic(dic_id, { check: true }));
     } else {
-      if (data === true) {
+      if (checkData === true) {
         console.log("펄스가 되나?");
         await updateDoc(docRef, { check: false });
         dispatch(updateDic(dic_id, { check: false }));
-      } else {
-        console.log("이게 맞나");
-        await updateDoc(docRef, data);
-        dispatch(updateDic(dic_id, data));
       }
     }
   };
 };
 
+export const updateDicFB = (dic_id, data) => {
+  return async function (dispatch) {
+    const docRef = doc(db, "dictionary", dic_id);
+    console.log("이게 맞나");
+    await updateDoc(docRef, data);
+    dispatch(updateDic(dic_id, data));
+  };
+};
+
+export const deleteDicFB = (dic_id) => {
+  return async function (dispatch) {
+    const docRef = doc(db, "dictionary", dic_id);
+    console.log(dic_id);
+    await deleteDoc(docRef);
+    dispatch(deleteDic(dic_id));
+  };
+};
 // Reducer
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
@@ -91,11 +104,13 @@ export default function reducer(state = initialState, action = {}) {
       return { list: action.dic_list };
     }
     case "my_dic/CREATE": {
+      console.log(action);
+      console.log(state);
       const new_dic_list = [...state.list, action.dic];
       return { list: new_dic_list };
     }
     case "my_dic/UPDATE": {
-      console.log(state)
+      console.log(state);
       const new_dic_list = state.list.map((cur, idx) => {
         console.log(cur);
         if (action.dic_id === cur.id) {
@@ -106,6 +121,15 @@ export default function reducer(state = initialState, action = {}) {
       });
       console.log(new_dic_list);
       return { list: new_dic_list };
+    }
+    case "my_dic/DELETE": {
+      console.log(state);
+      console.log(action.dic_id);
+      const after_Delete_List = state.list.filter(
+        (x) => x.id !== action.dic_id
+      );
+      console.log(after_Delete_List);
+      return { list: after_Delete_List };
     }
     default:
       return state;

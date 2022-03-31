@@ -54,19 +54,19 @@ function UpdateDic() {
           <div key={idx}>
             <DescBox>
               <p>단어</p>
-              <input ref={inputWord} defaultValue={cur.word} />
+              <Input ref={inputWord} defaultValue={cur.word} />
             </DescBox>
             <DescBox>
               <p>의미</p>
-              <input ref={inputMean} defaultValue={cur.mean} />
+              <Input ref={inputMean} defaultValue={cur.mean} />
             </DescBox>
             <DescBox>
               <p>예문</p>
-              <input ref={inputEx} defaultValue={cur.example} />
+              <Input ref={inputEx} defaultValue={cur.example} />
             </DescBox>
             <DescBox>
               <p>해석</p>
-              <input ref={inputTrans} defaultValue={cur.trans} />
+              <Input ref={inputTrans} defaultValue={cur.trans} />
             </DescBox>
             <SubmitBtn
               onClick={() => {
@@ -97,9 +97,20 @@ const DescBox = styled.div`
   // border: 1px solid black;
   width: 100%;
   padding-left: 42.5px;
-  input {
-    width: 80%;
+  p {
+    // border: 1px solid black;
+    margin: 15px 0 0 0;
   }
+`;
+
+const Input = styled.input`
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-bottom: 2px solid slateblue;
+  width: 80%;
+  height: 30px;
+  outline: none;
 `;
 
 const SubmitBtn = styled.button`

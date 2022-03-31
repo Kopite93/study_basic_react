@@ -46,19 +46,19 @@ function AddDic() {
       <h3>단어 추가하기</h3>
       <DescBox>
         <p>단어</p>
-        <input ref={inputWord} />
+        <Input ref={inputWord} />
       </DescBox>
       <DescBox>
         <p>의미</p>
-        <input ref={inputMean} />
+        <Input ref={inputMean} />
       </DescBox>
       <DescBox>
         <p>예문</p>
-        <input ref={inputEx} />
+        <Input ref={inputEx} />
       </DescBox>
       <DescBox>
         <p>해석</p>
-        <input ref={inputTrans} />
+        <Input ref={inputTrans} />
       </DescBox>
       <SubmitBtn
         onClick={() => {
@@ -73,7 +73,7 @@ function AddDic() {
 
 const AddBox = styled.div`
   // border: 1px solid black;
-  width: 35vw;
+  width: 440px;
   height: 40vh;
   margin: 50px auto;
   h3 {
@@ -86,9 +86,16 @@ const DescBox = styled.div`
   // border: 1px solid black;
   width: 100%;
   padding-left: 42.5px;
-  input {
-    width: 80%;
-  }
+`;
+
+const Input = styled.input`
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-bottom: 2px solid slateblue;
+  width: 350px;
+  height: 30px;
+  outline: none;
 `;
 
 const SubmitBtn = styled.button`
