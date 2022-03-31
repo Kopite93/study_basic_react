@@ -106,8 +106,9 @@ export default function reducer(state = initialState, action = {}) {
     case "my_dic/CREATE": {
       console.log(action);
       console.log(state);
-      const new_dic_list = [...state.list, action.dic];
-      return { list: new_dic_list };
+      // const new_dic_list = [action.dic, ...state.list];
+      // console.log(new_dic_list)
+      return { list: [action.dic], ...state };
     }
     case "my_dic/UPDATE": {
       console.log(state);
@@ -135,3 +136,13 @@ export default function reducer(state = initialState, action = {}) {
       return state;
   }
 }
+
+function foo() {
+  console.log(this.a);
+}
+
+var obj = {
+  a: 2,
+};
+
+foo.call(obj);
