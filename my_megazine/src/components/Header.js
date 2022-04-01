@@ -11,7 +11,13 @@ const Header = () => {
       <Grid is_flex width="880px" margin="50px auto">
         <div>🌍</div>
         <Grid is_flex>
-          <Button width="100px" margin="0 0 0 10px">
+          <Button
+            width="100px"
+            margin="0 0 0 10px"
+            onClick={() => {
+              history.push("/signup");
+            }}
+          >
             SignUp
           </Button>
           <Button

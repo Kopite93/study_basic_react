@@ -9,7 +9,11 @@ const Button = (props) => {
     margin: margin,
   };
 
-  return <Btn {...styles}>{props.children}</Btn>;
+  return (
+    <Btn {...styles} onClick={props.onClick}>
+      {props.children}
+    </Btn>
+  );
 };
 
 // Btn.defaultProps = {
