@@ -1,13 +1,16 @@
 import React from "react";
+import Grid from "../elements/Grid";
 
 const Post = (props) => {
   return (
-    <div>
-      <div>user img / nickname / Time / btn</div>
-      <div>contents</div>
-      <div>image</div>
-      <div>review count</div>
-    </div>
+    <>
+      <Grid>
+        <div>user img / nickname / Time / btn</div>
+        <div>contents</div>
+        <div>image</div>
+        <div>review count</div>
+      </Grid>
+    </>
   );
 };
 
