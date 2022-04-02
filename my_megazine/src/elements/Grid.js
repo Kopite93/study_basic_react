@@ -2,7 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 const Grid = (props) => {
-  const { is_flex, width, margin, padding, bg, border, children } = props;
+  const {
+    is_flex,
+    width,
+    margin,
+    padding,
+    bg,
+    border,
+    bor_radius,
+    shadow,
+    children,
+  } = props;
 
   const styles = {
     border: border,
@@ -11,6 +21,8 @@ const Grid = (props) => {
     margin: margin,
     padding: padding,
     bg: bg,
+    bor_radius: bor_radius,
+    shadow: shadow,
   };
 
   return (
@@ -28,10 +40,14 @@ Grid.defualtProps = {
   padding: false,
   margin: false,
   bg: false,
+  bor_radius: false,
+  shadow: false,
 };
 
 const GridBox = styled.div`
   border: ${(props) => (props.border ? `${props.border};` : "none;")}
+  ${(props) => (props.bor_radius ? `border-radius: 10px;` : "")}
+  ${(props) => (props.shadow ? `box-shadow: 5px 5px 5px gray;` : "")}
   width: ${(props) => props.width};
   height: "100%"
   box-sizing: border-box;

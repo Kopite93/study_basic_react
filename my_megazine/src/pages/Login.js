@@ -1,26 +1,35 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import Button from "../elements/Button";
 import Input from "../elements/Input";
-import { useHistory } from "react-router-dom";
+import { setCookie, getCookie, deleteCookie } from "./../shared/Cookie";
+import { useDispatch } from "react-redux";
+import { actionCreators as userActions } from "../redux/modules/user";
 
 const Login = () => {
-  const history = useHistory();
+  const dispatch = useDispatch();
+  const idInput = useRef(null);
+  const pwInput = useRef(null);
+
+  const login = () => {
+    dispatch(userActions.loginAction({ user_id: "world" }));
+  };
   return (
     <>
       {/* <Header /> */}
       <Box>
-        <Title
+        <Title onClick={() => {}}>My World</Title>
+        <Input ref={idInput}>아이디</Input>
+        <Input ref={pwInput}>비밀번호</Input>
+        <Button
+          width="400px"
+          margin="70px auto"
+          fontSize='35px'
           onClick={() => {
-            history.push("/");
+            login();
           }}
         >
-          My World
-        </Title>
-        <Input>아이디</Input>
-        <Input>비밀번호</Input>
-        <Button width="400px" margin="70px auto">
-          Login
+          로그인
         </Button>
       </Box>
     </>

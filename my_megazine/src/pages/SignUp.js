@@ -12,7 +12,7 @@ const SignUp = () => {
       <Box>
         <Title
           onClick={() => {
-            history.push("/");
+            history.push('/')
           }}
         >
           My World
