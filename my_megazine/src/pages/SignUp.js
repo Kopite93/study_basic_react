@@ -1,27 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../elements/Button";
 import Input from "../elements/Input";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { actionCreators as userActions } from "../redux/modules/user";
 
 const SignUp = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  const [pwCheck, setPwCheck] = useState("");
+  const [nickName, setNickName] = useState("");
+
+  const signUp = () => {
+    if (pw !== pwCheck) {
+      return;
+    }
+    if (id === "" || pw === "" || nickName === "") {
+      return;
+    }
+    dispatch(userActions.singUpFB(id, pw, nickName));
+  };
   return (
     <>
       {/* <Header /> */}
       <Box>
         <Title
           onClick={() => {
-            history.push('/')
+            history.push("/");
           }}
         >
           My World
         </Title>
-        <Input>아이디</Input>
-        <Input>닉네임</Input>
-        <Input>비밀번호</Input>
-        <Input>비밀번호 확인</Input>
-        <Button width="400px" margin="70px auto">
+        <Input
+          onChange={(e) => {
+            setId(e.target.value);
+          }}
+        >
+          아이디
+        </Input>
+        <Input
+          onChange={(e) => {
+            setNickName(e.target.value);
+          }}
+        >
+          닉네임
+        </Input>
+        <Input
+          onChange={(e) => {
+            setPw(e.target.value);
+          }}
+        >
+          비밀번호
+        </Input>
+        <Input
+          onChange={(e) => {
+            setPwCheck(e.target.value);
+          }}
+        >
+          비밀번호 확인
+        </Input>
+        <Button width="400px" margin="70px auto" onClick={signUp}>
           가입하기
         </Button>
       </Box>

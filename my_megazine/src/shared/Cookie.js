@@ -1,5 +1,4 @@
-const setCookie = (name, id, exp = 5) => {
-  console.log(id, exp);
+const setCookie = (name, id, exp = 3) => {
   let date = new Date();
   date.setTime(date.getTime() + exp * 1000 * 60 * 60 * 24);
   document.cookie = `${name} =${id}; expires =${date.toUTCString()} `;

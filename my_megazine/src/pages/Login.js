@@ -1,30 +1,55 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../elements/Button";
-import Input from "../elements/Input";
-import { setCookie, getCookie, deleteCookie } from "./../shared/Cookie";
+
 import { useDispatch } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
+import { history } from "../redux/configStore";
+import Input from "../elements/Input";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const idInput = useRef(null);
-  const pwInput = useRef(null);
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
 
   const login = () => {
-    dispatch(userActions.loginAction({ user_id: "world" }));
+    if (id === "" || pw === "") {
+      window.alert("아이디 혹은 비빌번호를 입력해주세요");
+      return;
+    }
+
+    dispatch(userActions.logInFB(id, pw));
   };
   return (
     <>
       {/* <Header /> */}
       <Box>
-        <Title onClick={() => {}}>My World</Title>
-        <Input ref={idInput}>아이디</Input>
-        <Input ref={pwInput}>비밀번호</Input>
+        <Title
+          onClick={() => {
+            history.push("/");
+          }}
+        >
+          My World
+        </Title>
+        <Input
+          onChange={(e) => {
+            setId(e.target.value);
+          }}
+        >
+          아이디
+        </Input>
+        <Input
+          type="passWord"
+          onChange={(e) => {
+            setPw(e.target.value);
+          }}
+        >
+          비밀번호
+        </Input>
         <Button
           width="400px"
           margin="70px auto"
-          fontSize='35px'
+          fontSize="35px"
           onClick={() => {
             login();
           }}

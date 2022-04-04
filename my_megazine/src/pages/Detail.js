@@ -1,12 +1,15 @@
 import React from "react";
+import Header from "../components/Header";
 import Grid from "../elements/Grid";
-import Image from "../elements/Image";
+import Image from "./../elements/Image";
 import Button from "../elements/Button";
-import { history } from "../redux/configStore";
+import CommentList from "../components/CommentList";
+import AddComments from "../components/AddComments";
 
-const Post = (props) => {
+const Detail = () => {
   return (
-    <>
+    <Grid>
+      <Header></Header>
       <Grid
         width="600px"
         border="2px solid slateblue"
@@ -39,25 +42,17 @@ const Post = (props) => {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/200px-React-icon.svg.png"
           />
         </Grid>
-        <Grid margin="10px" padding="10px">
-          <div>댓글 5개</div>
+        <Grid>
+          <AddComments></AddComments>
         </Grid>
+        <CommentList>무슨 일이에요? (수근수근)</CommentList>
+        <CommentList>무슨 일이에요? (수근수근)</CommentList>
+        <CommentList>무슨 일이에요? (수근수근)</CommentList>
+        <CommentList>무슨 일이에요? (수근수근)</CommentList>
+        <CommentList>무슨 일이에요? (수근수근)</CommentList>
       </Grid>
-    </>
+    </Grid>
   );
 };
 
-Post.defaultProps = {
-  user_info: {
-    user_name: "world",
-    user_profile:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
-  },
-  imagte_url:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
-  contents: "와...리액트...",
-  postTime: "2022-04-01 10:00:00",
-  review_count: "5",
-};
-
-export default Post;
+export default Detail;
