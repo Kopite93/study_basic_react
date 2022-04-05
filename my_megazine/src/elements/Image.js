@@ -33,7 +33,7 @@ Image.defaultProps = {
 };
 
 const AspectOutter = styled.div`
-  width: 600px;
+  width: 596px;
   min-width: 250px;
 `;
 

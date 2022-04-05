@@ -3,8 +3,11 @@ import Grid from "../elements/Grid";
 import Image from "../elements/Image";
 import Button from "../elements/Button";
 import { history } from "../redux/configStore";
+import user from "../redux/modules/user";
 
 const Post = (props) => {
+  const { comment_cnt, contents, id, image_url, insert_dt, user_info } = props;
+
   return (
     <>
       <Grid
@@ -12,19 +15,15 @@ const Post = (props) => {
         border="2px solid slateblue"
         bor_radius
         shadow
-        margin="0 auto"
+        margin="50px auto"
       >
         <Grid is_flex width="600px" margin="0 auto">
           <Grid is_flex>
-            <Image
-              shape="circle"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/200px-React-icon.svg.png"
-              size="36"
-            />
-            / nickname
+            <Image shape="circle" src={user_info.user_profile} size="36" />/{" "}
+            {user_info.nickname}
           </Grid>
           <Grid is_flex margin="0 10px">
-            Time{" "}
+            {insert_dt}
             <Button width="35px" height="25px" margin="10px 0 10px 10px">
               수정
             </Button>
@@ -32,15 +31,12 @@ const Post = (props) => {
         </Grid>
         <Grid width="600px" margin="0 auto">
           <Grid padding="20px">
-            <div>나는 그 날을 잊지 않는다</div>
+            <div>{contents}</div>
           </Grid>
-          <Image
-            shape="rectangle"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/200px-React-icon.svg.png"
-          />
+          <Image shape="rectangle" src={image_url} />
         </Grid>
         <Grid margin="10px" padding="10px">
-          <div>댓글 5개</div>
+          <div>댓글 {comment_cnt}개</div>
         </Grid>
       </Grid>
     </>

@@ -66,7 +66,7 @@ const Box = styled.div`
   border: 2px solid slateblue;
   border-radius: 20px;
   width: 440px;
-  height: 400px;
+  // height: 400px;
   margin: 200px auto;
   box-shadow: 5px 5px 5px gray;
 `;

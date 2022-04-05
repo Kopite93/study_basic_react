@@ -49,7 +49,7 @@ const GridBox = styled.div`
   ${(props) => (props.bor_radius ? `border-radius: 10px;` : "")}
   ${(props) => (props.shadow ? `box-shadow: 5px 5px 5px gray;` : "")}
   width: ${(props) => props.width};
-  height: "100%"
+  height: 100%;
   box-sizing: border-box;
   word-break:break-all;
   ${(props) => (props.padding ? `padding: ${props.padding};` : "")}
