@@ -43,7 +43,12 @@ const AddPost = (props) => {
   };
 
   const uploadFB = () => {
-    let image = fileInput.current.files[0];
+    let image = fileInput.current?.files[0];
+    if (!fileInput.current || fileInput.current.files.length === 0) {
+      window.alert("파일을 선택해주세요!");
+      return;
+    }
+    //옵셔널체이닝
     console.log(image.name);
     dispatch(imageActions.uploadImageFB(image));
     dispatch(postActions.addPostFB(contents));
