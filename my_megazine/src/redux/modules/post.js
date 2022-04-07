@@ -33,6 +33,7 @@ const initialPost = {
 };
 
 //middlewares
+//이 부분 자세히 볼 것
 export const addPostFB = (contents = "") => {
   return function (dispatch, getState, { history }) {
     const postDB = firestore.collection("post");
